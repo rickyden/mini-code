@@ -68,7 +68,7 @@ def main():
     button=tk.Button(root,text="roll",font=set_font,command=dice_roll)
     button.grid(row = 9,column=1, pady = 2)
 
-
+    # v1
     # def dice_roller():
     #     arg = Entry.get().split("d")
     #     times = int(arg[0])
