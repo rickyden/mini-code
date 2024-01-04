@@ -1,10 +1,10 @@
 # mini-code
 ## cointoss sim
-<p>Date: 2/5/2023
+<p>Date: 2/5/2023<br>
 simulate coin toss with money increase by x% and decrease by y% with head and tails</p>
 
 ## Coc dice roller 
-<p>Date: 27/7/2023
+<p>Date: 27/7/2023<br>
 v1 - dice roller with only custom entry e.g. 2d6<br>
 v2 - dice roller with preset radio button and custom entry</p>
 
