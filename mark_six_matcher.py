@@ -78,20 +78,25 @@ def my_num_match(mark_six):
                     count += 1
         print(f'list {my_list}, matched = {count}')
         
-def custom_entry_single_list():        
-    custom_list_input :list[str] = input("enter your list (format: 1 2 3 47 48 49): ").split(" ")
+def custom_list_entry():   
+    custom_list_input :list[str] = input("enter your list (format: 1 2 3 47 48 49) Enter 0 to Exit: ").split(" ")
     for index, num in enumerate(custom_list_input):
         if 1 <= int(num) <= 9: 
             custom_list_input[index] = '0' + num
     wrapped_list = [custom_list_input]
+    # for multi list entry only
+    if custom_list_input == ['0']:
+        return 0 
     return wrapped_list
 
-def custom_entry_multi_list():
-    choice = -1    
+def custom_entry_multi_list():  
     multi_list = []
-    while (choice != '0'):
-        multi_list += custom_entry_single_list()
-        choice = input("1: Keep input\n0: Exit\ninput: ")
+    while (True):
+        custom_list = custom_list_entry()
+        if (custom_list == 0):
+            break
+        else:
+            multi_list += custom_list
     return multi_list
                 
 def custom_match(custom_list, mark_six_result):
@@ -104,7 +109,7 @@ def custom_match(custom_list, mark_six_result):
                 else:
                     count += 1
         print(f'list: {mark_six_list}, matched = {count}')
-        
+
 def main():
     choice = 0
     choice :str = input('1:my number\n2:custom number (single)\n3:custome number (multi)\ninput: ')
@@ -113,15 +118,15 @@ def main():
         mark_six = get_mark_six()
         if not mark_six:
             exit()
-        print(f"期數: {mark_six[0]}, 號碼: {mark_six[1]}")
+        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
         my_num_match(mark_six)
         
     elif choice == '2':
-        custom_list = custom_entry_single_list()
+        custom_list = custom_list_entry()
         mark_six = get_mark_six()
         if not mark_six:
             exit()
-        print(f"期數: {mark_six[0]}, 號碼: {mark_six[1]}")
+        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
         custom_match(custom_list, mark_six)
         
     elif choice == '3':
@@ -129,7 +134,7 @@ def main():
         mark_six = get_mark_six()
         if not mark_six:
             exit()
-        print(f"期數: {mark_six[0]}, 號碼: {mark_six[1]}")
+        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
         custom_match(custom_list, mark_six)    
      
 main()
