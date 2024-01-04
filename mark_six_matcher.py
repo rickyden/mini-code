@@ -112,7 +112,7 @@ def custom_match(custom_list, mark_six_result):
 
 def main():
     choice = 0
-    choice :str = input('1:my number\n2:custom number (single)\n3:custome number (multi)\ninput: ')
+    choice :str = input('1:my number\n2:custom list (single)\n3:custom list (multi)\ninput: ')
     
     if choice == '1':
         mark_six = get_mark_six()
@@ -135,6 +135,7 @@ def main():
         if not mark_six:
             exit()
         print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
-        custom_match(custom_list, mark_six)    
-     
-main()
+        custom_match(custom_list, mark_six) 
+           
+if __name__ == "__main__":     
+    main()
