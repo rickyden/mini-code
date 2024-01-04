@@ -7,9 +7,9 @@ simulate coin toss with money increase by x% and decrease by y% with head and ta
 v2 - dice roller with preset radio button and custom entry</p>
 
 ## mark six matcher
-<p> using web scraping to get the latest mark six result
- function:
- 1: check how many I match with the latest mark six
- 2: enter custom list for checking
+<p> using web scraping to get the latest mark six result<br>
+ function:<br>
+ 1: check how many I match with the latest mark six<br>
+ 2: enter custom list for checking<br>
  3: enter multiple custom list for checking
 
