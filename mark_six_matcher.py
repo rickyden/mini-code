@@ -111,31 +111,29 @@ def custom_match(custom_list, mark_six_result):
                     count += 1
         print(f'list: {mark_six_list}, matched = {count}')
 
-def main():
-    choice = 0
-    choice :str = input('1:my number\n2:custom list (single)\n3:custom list (multi)\ninput: ')
-    
-    if choice == '1':
+def mark_six_output():
         mark_six = get_mark_six()
         if not mark_six:
             exit()
         print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
+        return mark_six
+
+def main():
+    choice = 0
+    choice : str = input('1:my number\n2:custom list (single)\n3:custom list (multi)\ninput: ')
+    
+    if choice == '1':
+        mark_six = mark_six_output()
         my_num_match(mark_six)
         
     elif choice == '2':
         custom_list = custom_list_entry()
-        mark_six = get_mark_six()
-        if not mark_six:
-            exit()
-        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
+        mark_six = mark_six_output()
         custom_match(custom_list, mark_six)
         
     elif choice == '3':
         custom_list = custom_entry_multi_list()
-        mark_six = get_mark_six()
-        if not mark_six:
-            exit()
-        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
+        mark_six = mark_six_output()
         custom_match(custom_list, mark_six) 
            
 if __name__ == "__main__":     
