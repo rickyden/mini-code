@@ -38,7 +38,7 @@ def get_mark_six():
             row = result_table.find('div', {'class': 'resultMainRow'})
 
             if row:
-                result_number = row.find('div', {'class': 'resultMainCell1'}).text.strip()
+                Draw_number = row.find('div', {'class': 'resultMainCell1'}).text.strip()
 
                 # Extracting the numbers from the image titles or alt text using regex
                 images = row.find_all('img')
@@ -50,10 +50,9 @@ def get_mark_six():
 
                     # Filter out blank elements
                     image_numbers = list(filter(None, image_numbers))
-                    
-                    return str(result_number), image_numbers
+                    return str(Draw_number), image_numbers
                 else:
-                    print(f"No image found for result number: {result_number}")
+                    print(f"No image found for result number: {Draw_number}")
         else:
             print("Unable to find 'resultMainTable' on the webpage.")
     except Exception:
@@ -64,11 +63,6 @@ def get_mark_six():
         driver.quit()
         
 def my_num_match(mark_six):
-    # my_mark_six = [['03', '09', '30', '33', '34', '43'],
-    #                ['09', '13', '24', '38', '39', '44'],
-    #                ['06', '07', '19', '26', '40', '49'],
-    #                ['03', '08', '23', '35', '37', '47'],
-    #                ['04', '06', '16', '24', '27', '44','48']]
     my_mark_six = [['01','07','13','27','39','41'],
                    ['03','08','09','35','36','44'],
                    ['11','15','23','28','30','37'],
@@ -86,17 +80,8 @@ def my_num_match(mark_six):
                    ['06','18','19','21','35','47'],
                    ['22','29','30','31','39','46'],
                    ['01','07','13','27','45','49']]
-    
-    for my_list in my_mark_six:
-        count = 0
-        for my_num in my_list:
-            if my_num in mark_six[1]:
-                if my_num in mark_six[1][6]:
-                    count += 0.5
-                else:
-                    count += 1
-        print(f'list {my_list}, matched = {count}')
-        
+    mark_six_match(my_mark_six, mark_six)
+                    
 def custom_list_entry():   
     custom_list_input :list[str] = input("enter your list (format: 1 2 3 47 48 49) Enter 0 to Exit: ").split(" ")
     for index, num in enumerate(custom_list_input):
@@ -118,7 +103,7 @@ def custom_entry_multi_list():
             multi_list += custom_list
     return multi_list
                 
-def custom_match(custom_list, mark_six_result):
+def mark_six_match(custom_list, mark_six_result):
     for mark_six_list in custom_list:
         count = 0
         for num in mark_six_list:
@@ -127,13 +112,29 @@ def custom_match(custom_list, mark_six_result):
                     count += 0.5
                 else:
                     count += 1
-        print(f'list: {mark_six_list}, matched = {count}')
+        match count:
+            case 3:            
+                print(f'list {mark_six_list}, matched = {count} 七獎')
+            case 3.5:
+                print(f'list {mark_six_list}, matched = {count} 六獎')                
+            case 4:
+                print(f'list {mark_six_list}, matched = {count} 五獎') 
+            case 4.5:
+                print(f'list {mark_six_list}, matched = {count} 四獎') 
+            case 5:
+                print(f'list {mark_six_list}, matched = {count} 三獎') 
+            case 5.5:
+                print(f'list {mark_six_list}, matched = {count} 二獎') 
+            case 6:
+                print(f'list {mark_six_list}, matched = {count} 頭獎')
+            case _:
+                print(f'list {mark_six_list}, matched = {count}')
 
 def mark_six_output():
         mark_six = get_mark_six()
         if not mark_six:
             exit()
-        print(f"期數: {mark_six[0]}\n 號碼: {mark_six[1]}")
+        print(f"期數: {mark_six[0]}\n號碼: {mark_six[1]}")
         return mark_six
 
 def main():
@@ -147,12 +148,12 @@ def main():
     elif choice == '2':
         custom_list = custom_list_entry()
         mark_six = mark_six_output()
-        custom_match(custom_list, mark_six)
+        mark_six_match(custom_list, mark_six)
         
     elif choice == '3':
         custom_list = custom_entry_multi_list()
         mark_six = mark_six_output()
-        custom_match(custom_list, mark_six) 
+        mark_six_match(custom_list, mark_six) 
            
 if __name__ == "__main__":     
     main()
