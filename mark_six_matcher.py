@@ -103,6 +103,11 @@ def custom_entry_multi_list():
             multi_list += custom_list
     return multi_list
                 
+# def mark_six_match_single(custom_list, single_mark_six_result):
+#     for mark_six_list in custom_list:
+#         count = 0 
+#         for num in               
+                
 def mark_six_match(custom_list, mark_six_result):
     for mark_six_list in custom_list:
         count = 0
@@ -131,18 +136,23 @@ def mark_six_match(custom_list, mark_six_result):
                 print(f'list {mark_six_list}, matched = {count}')
 
 def mark_six_output():
-        mark_six = get_mark_six()
-        if not mark_six:
-            exit()
-        print(f"期數: {mark_six[0]}\n號碼: {mark_six[1]}")
-        return mark_six
+    mark_six = get_mark_six()
+    if not mark_six:
+        exit()
+    print(f"期數: {mark_six[0]}\n號碼: {mark_six[1]}")
+    return mark_six
+    
+def mark_six_hardcode():
+    mark_six = ['04','15','22','25','29','42','01']
+    return ["n",mark_six]
 
 def main():
     choice = 0
     choice : str = input('1:my number\n2:custom list (single)\n3:custom list (multi)\ninput: ')
     
     if choice == '1':
-        mark_six = mark_six_output()
+        #mark_six = mark_six_output()
+        mark_six = mark_six_hardcode()
         my_num_match(mark_six)
         
     elif choice == '2':
